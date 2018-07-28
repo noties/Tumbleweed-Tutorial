@@ -53,7 +53,7 @@ public abstract class AnimationScene {
     }
 
     protected static void setAlpha(@FloatRange(from = .0F, to = 1.F) float alpha, View... views) {
-        for (View view: views) {
+        for (View view : views) {
             view.setAlpha(alpha);
         }
     }

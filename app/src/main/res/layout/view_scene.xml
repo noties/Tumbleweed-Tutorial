@@ -16,6 +16,7 @@
         tools:text="This is description" />
 
     <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -93,11 +94,19 @@
 
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/source"
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dip"
-        tools:text="This is some text here" />
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dip"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:text="This is some text here" />
+
+    </HorizontalScrollView>
 
 </merge>

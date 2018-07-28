@@ -23,4 +23,10 @@ dependencies {
     implementation SUPPORT_ANNOTATIONS
 
     implementation TUMBLEWEED
+
+    implementation MARKWON
+    implementation MARKWON_SYNTAX
+
+    implementation PRISM_4J
+    annotationProcessor PRISM_4J_BUNDLER
 }

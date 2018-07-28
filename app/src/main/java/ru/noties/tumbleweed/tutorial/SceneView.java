@@ -8,11 +8,18 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import ru.noties.tumbleweed.Tween;
 import ru.noties.tumbleweed.TweenManager;
+import ru.noties.tumbleweed.android.ViewTweenManager;
 import ru.noties.tumbleweed.android.ViewTweenManagerExposedConstructor;
+import ru.noties.tumbleweed.android.types.Alpha;
+import ru.noties.tumbleweed.equations.Cubic;
+import ru.noties.tumbleweed.equations.Linear;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene;
 
 public class SceneView extends LinearLayout {
+
+    private View container;
 
     private View group;
 
@@ -48,14 +55,16 @@ public class SceneView extends LinearLayout {
 
         inflate(context, R.layout.view_scene, this);
 
-        group = findViewById(R.id.group);
+        container = findViewById(R.id.container);
 
-        view1 = findViewById(R.id.view_1);
-        view2 = findViewById(R.id.view_2);
-        view3 = findViewById(R.id.view_3);
-        view4 = findViewById(R.id.view_4);
+        group = container.findViewById(R.id.group);
 
-        play = findViewById(R.id.play);
+        view1 = container.findViewById(R.id.view_1);
+        view2 = container.findViewById(R.id.view_2);
+        view3 = container.findViewById(R.id.view_3);
+        view4 = container.findViewById(R.id.view_4);
+
+        play = container.findViewById(R.id.play);
 
         description = findViewById(R.id.description);
         source = findViewById(R.id.source);
@@ -64,7 +73,7 @@ public class SceneView extends LinearLayout {
         tweenManager = new SceneViewTweenManager(R.id.tween_manager, group);
     }
 
-    public void setScene(@NonNull AnimationScene scene) {
+    public void setScene(@NonNull AnimationScene scene, @NonNull SourceCodeObtainer sourceCodeObtainer) {
 
         if (this.scene != null) {
             throw new RuntimeException("Please do not re-use SceneView and set AnimationScene only once");
@@ -73,7 +82,7 @@ public class SceneView extends LinearLayout {
 
         description.setText(scene.description());
 
-        play.setOnClickListener(v -> {
+        container.setOnClickListener(v -> {
             if (tweenManager.isRunning()) {
                 tweenManager.pause();
             } else {
@@ -84,11 +93,8 @@ public class SceneView extends LinearLayout {
                 }
             }
         });
-    }
 
-    @NonNull
-    private String obtainSource(@NonNull AnimationScene scene) {
-        return null;
+        source.setText(sourceCodeObtainer.sourceCode(scene));
     }
 
     private class SceneViewTweenManager extends ViewTweenManagerExposedConstructor {
@@ -103,7 +109,7 @@ public class SceneView extends LinearLayout {
 
             if (!isDisposed()) {
                 // hide play icon
-                play.setVisibility(GONE);
+                setPlayVisible(false);
             }
         }
 
@@ -113,8 +119,15 @@ public class SceneView extends LinearLayout {
 
             if (!isDisposed()) {
                 // show icon
-                play.setVisibility(VISIBLE);
+                setPlayVisible(true);
             }
+        }
+
+        private void setPlayVisible(boolean visible) {
+            Tween.to(play, Alpha.VIEW, .25F)
+                    .target(visible ? 1.F : .0F)
+                    .ease(visible ? Linear.INOUT : Cubic.IN)
+                    .start(ViewTweenManager.get(R.id.tween_manager, play));
         }
     }
 }

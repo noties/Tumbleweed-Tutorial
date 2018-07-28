@@ -14,6 +14,7 @@ import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Basic;
 public class MainActivity extends Activity {
 
     private ViewGroup container;
+    private SourceCodeObtainer sourceCodeObtainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         container = findViewById(R.id.scroll_view);
+        sourceCodeObtainer = SourceCodeObtainer.create(this);
 
         showScene(new AnimationScene_Basic());
     }
@@ -29,7 +31,7 @@ public class MainActivity extends Activity {
         container.removeAllViews();
 
         final SceneView view = new SceneView(this);
-        view.setScene(scene);
+        view.setScene(scene, sourceCodeObtainer);
         container.addView(view);
     }
 

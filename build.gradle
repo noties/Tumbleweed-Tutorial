@@ -1,0 +1,45 @@
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion '4.9'
+    distributionType 'all'
+}
+
+ext {
+    MIN_SDK = 21
+    TARGET_SDK = 27
+    BUILD_TOOLS = '27.0.3'
+
+    final def supportVersion = '27.1.1'
+    SUPPORT_ANNOTATIONS = "com.android.support:support-annotations:$supportVersion"
+
+    TUMBLEWEED = 'ru.noties:tumbleweed-android:1.0.2'
+
+    final def markwonVersion = '1.1.0'
+    MARKWON = "ru.noties:markwon:$markwonVersion"
+    MARKWON_SYNTAX = "ru.noties:markwon-syntax:$markwonVersion"
+
+    final def prism4jVersion = '1.1.0'
+    PRISM_4J = "ru.noties:prism4j:$prism4jVersion"
+    PRISM_4J_BUNDLER = "ru.noties:prism4j-bundler$prism4jVersion"
+}

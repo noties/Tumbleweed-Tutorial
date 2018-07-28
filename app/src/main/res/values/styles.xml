@@ -1,6 +1,14 @@
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar"/>
+
+    <style name="AnimatedView">
+        <item name="android:layout_width">72dip</item>
+        <item name="android:layout_height">72dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">4dip</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">30sp</item>
     </style>
 
 </resources>

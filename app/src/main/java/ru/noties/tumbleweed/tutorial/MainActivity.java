@@ -17,6 +17,7 @@ import ru.noties.tumbleweed.tutorial.scene.AnimationScene_AllWithDelayArbitrary;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Basic;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Basic2;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Color;
+import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Elevation;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Expand;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Expand2;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_ExpandSequential;
@@ -27,6 +28,9 @@ import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Repeat;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_RepeatIndividual;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_RepeatIndividualYoYo;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_RepeatYoYo;
+import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Rotation;
+import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Rotation2;
+import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Scale;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Text;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Text2;
 
@@ -61,6 +65,10 @@ public class MainActivity extends Activity {
         final SceneView view = new SceneView(this);
         view.setScene(scene, sourceCodeObtainer);
         container.addView(view);
+        container.post(() -> {
+            // todo: update with Scroll tween type when available (1.0.3)
+            container.scrollTo(0, 0);
+        });
     }
 
     @Override
@@ -94,7 +102,11 @@ public class MainActivity extends Activity {
                 new AnimationScene_ExpandSequential(),
                 new AnimationScene_Color(),
                 new AnimationScene_Text(),
-                new AnimationScene_Text2()
+                new AnimationScene_Text2(),
+                new AnimationScene_Rotation(),
+                new AnimationScene_Rotation2(),
+                new AnimationScene_Scale(),
+                new AnimationScene_Elevation()
         );
     }
 }

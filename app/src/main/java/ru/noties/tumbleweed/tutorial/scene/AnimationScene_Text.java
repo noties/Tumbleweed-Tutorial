@@ -59,7 +59,7 @@ public class AnimationScene_Text extends AnimationScene {
 
         @Override
         public void getValues(@NonNull TextView textView, @NonNull float[] values) {
-            values[0] = Float.parseFloat(textView.getText().toString());
+            values[0] = Integer.parseInt(textView.getText().toString());
         }
 
         @Override

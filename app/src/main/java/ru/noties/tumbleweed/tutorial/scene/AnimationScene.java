@@ -52,9 +52,22 @@ public abstract class AnimationScene {
         return Tween.to(view, Alpha.VIEW, duration).target(1.F);
     }
 
-    protected static void setAlpha(@FloatRange(from = .0F, to = 1.F) float alpha, View... views) {
-        for (View view : views) {
-            view.setAlpha(alpha);
-        }
+    protected static void setAlpha(
+            @FloatRange(from = .0F, to = 1.F) float alpha,
+            @NonNull View view1,
+            @NonNull View view2,
+            @NonNull View view3,
+            @NonNull View view4
+    ) {
+        view1.setAlpha(alpha);
+        view2.setAlpha(alpha);
+        view3.setAlpha(alpha);
+        view4.setAlpha(alpha);
     }
+
+//    protected static void setAlpha(@FloatRange(from = .0F, to = 1.F) float alpha, View... views) {
+//        for (View view : views) {
+//            view.setAlpha(alpha);
+//        }
+//    }
 }

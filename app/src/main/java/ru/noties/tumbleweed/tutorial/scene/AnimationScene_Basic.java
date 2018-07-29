@@ -39,7 +39,7 @@ public class AnimationScene_Basic extends AnimationScene {
     @NonNull
     @Override
     public String description() {
-        return "First scene that fades in view in a sequence (and does not " +
+        return "Fade in views in a sequence (and does not " +
                 "use helper methods)";
     }
 }

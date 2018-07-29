@@ -5,10 +5,10 @@ import android.view.View;
 
 import ru.noties.tumbleweed.Timeline;
 
-public class AnimationScene_Basic2 extends AnimationScene {
+public class AnimationScene_Parallel2 extends AnimationScene {
 
-    public AnimationScene_Basic2() {
-        super("Basic2");
+    public AnimationScene_Parallel2() {
+        super("Parallel2");
     }
 
     @Override
@@ -21,17 +21,17 @@ public class AnimationScene_Basic2 extends AnimationScene {
 
         setAlpha(.0F, view1, view2, view3, view4);
 
-        Timeline.createSequence()
+        Timeline.createParallel()
                 .push(fadeIn(view1))
-                .push(fadeIn(view2))
+                .push(fadeIn(view2, 2.F))
                 .push(fadeIn(view3))
-                .push(fadeIn(view4))
+                .push(fadeIn(view4, 3.F))
                 .start(tweenManager(group));
     }
 
     @NonNull
     @Override
     public String description() {
-        return "Fade in views in a sequence";
+        return "Fade in views in parallel (different times)";
     }
 }

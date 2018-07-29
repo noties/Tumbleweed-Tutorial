@@ -6,4 +6,6 @@
     <color name="color_3">#4CAF50</color>
     <color name="color_4">#FFEB3B</color>
 
+    <color name="scene_picker_bg_color">#19000000</color>
+
 </resources>

@@ -7,27 +7,52 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Arrays;
+import java.util.List;
+
 import ru.noties.tumbleweed.android.utils.ViewUtils;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene;
 import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Basic;
+import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Basic2;
+import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Parallel;
+import ru.noties.tumbleweed.tutorial.scene.AnimationScene_Parallel2;
 
 public class MainActivity extends Activity {
 
+    private static final String KEY_SELECTED_SCENE = "key.SelectedScene";
+
     private ViewGroup container;
     private SourceCodeObtainer sourceCodeObtainer;
+    private ScenePickerView scenePickerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final int selected = savedInstanceState != null
+                ? savedInstanceState.getInt(KEY_SELECTED_SCENE, 0)
+                : 0;
+
         container = findViewById(R.id.scroll_view);
         sourceCodeObtainer = SourceCodeObtainer.create(this);
 
-        showScene(new AnimationScene_Basic());
+        scenePickerView = findViewById(R.id.scene_picker);
+        scenePickerView.setScenes(selected, animationScenes(), this::showScene);
+    }
+
+    @NonNull
+    private static List<AnimationScene> animationScenes() {
+        return Arrays.asList(
+                new AnimationScene_Basic(),
+                new AnimationScene_Basic2(),
+                new AnimationScene_Parallel(),
+                new AnimationScene_Parallel2()
+        );
     }
 
     private void showScene(@NonNull AnimationScene scene) {
+
         container.removeAllViews();
 
         final SceneView view = new SceneView(this);
@@ -35,7 +60,16 @@ public class MainActivity extends Activity {
         container.addView(view);
     }
 
-//    private void temp() {
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        if (scenePickerView != null) {
+            outState.putInt(KEY_SELECTED_SCENE, scenePickerView.getSelected());
+        }
+    }
+
+    //    private void temp() {
 //        viewTweenManager.killAll();
 //
 //        view1.setAlpha(.0F);

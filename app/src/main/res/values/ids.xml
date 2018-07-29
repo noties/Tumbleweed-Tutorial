@@ -2,5 +2,6 @@
 <resources>
 
     <item name="tween_manager" type="id" />
+    <item name="adapter_holder" type="id" />
 
 </resources>

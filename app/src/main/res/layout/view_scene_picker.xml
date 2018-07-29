@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="56dip"
+    tools:orientation="horizontal"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <ImageView
+        android:id="@+id/previous"
+        android:layout_width="56dip"
+        android:layout_height="56dip"
+        android:background="?android:attr/selectableItemBackground"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_navigate_before" />
+
+    <LinearLayout
+        android:id="@+id/group"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="8dip"
+        android:layout_weight="1"
+        android:background="@drawable/bg_scene_picker"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="8dip"
+        android:paddingLeft="24dip"
+        android:paddingRight="8dip"
+        android:paddingTop="8dip"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000"
+            android:textStyle="bold"
+            tools:text="The name of the scene and name " />
+
+        <ImageView
+            android:layout_width="24dip"
+            android:layout_height="24dip"
+            android:src="@drawable/ic_arrow_drop_down" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="56dip"
+        android:layout_height="56dip"
+        android:background="?android:attr/selectableItemBackground"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_navigate_next" />
+
+</merge>

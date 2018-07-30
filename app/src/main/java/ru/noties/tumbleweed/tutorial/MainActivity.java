@@ -65,10 +65,7 @@ public class MainActivity extends Activity {
         final SceneView view = new SceneView(this);
         view.setScene(scene, sourceCodeObtainer);
         container.addView(view);
-        container.post(() -> {
-            // todo: update with Scroll tween type when available (1.0.3)
-            container.scrollTo(0, 0);
-        });
+        container.post(() -> container.scrollTo(0, 0));
     }
 
     @Override

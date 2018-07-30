@@ -35,9 +35,9 @@ ext {
     final def supportVersion = '27.1.1'
     SUPPORT_ANNOTATIONS = "com.android.support:support-annotations:$supportVersion"
 
-    TUMBLEWEED = 'ru.noties:tumbleweed-android:1.0.2'
+    TUMBLEWEED = 'ru.noties:tumbleweed-android:1.0.3'
 
-    final def markwonVersion = '1.1.0-SNAPSHOT'
+    final def markwonVersion = '1.1.0'
     MARKWON = "ru.noties:markwon:$markwonVersion"
     MARKWON_SYNTAX = "ru.noties:markwon-syntax:$markwonVersion"
 
